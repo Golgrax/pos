@@ -48,7 +48,16 @@
 
     <script>
         function calculateTotal() {
-            // ... (same as before)
+            const fghcPrice = 99.99;
+            const dkjfnPrice = 15.99;
+            const zxfcPrice = 11.00;
+
+            const fghcQuantity = parseFloat(document.getElementById('fghcQuantity').value);
+            const dkjfnQuantity = parseFloat(document.getElementById('dkjfnQuantity').value);
+            const zxfcQuantity = parseFloat(document.getElementById('zxfcQuantity').value);
+
+            const totalAmount = (fghcPrice * fghcQuantity) + (dkjfnPrice * dkjfnQuantity) + (zxfcPrice * zxfcQuantity);
+            document.getElementById('totalAmount').textContent = totalAmount.toFixed(2);
         }
 
         function calculateBalance() {
@@ -70,4 +79,3 @@
     </script>
 </body>
 </html>
-
