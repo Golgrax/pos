@@ -11,6 +11,12 @@
         .product {
             margin-bottom: 10px;
         }
+        .receipt {
+            float: right;
+            border: 1px solid #ccc;
+            padding: 10px;
+            width: 200px;
+        }
     </style>
 </head>
 <body>
@@ -46,18 +52,18 @@
     <button onclick="calculateBalance()">Calculate Balance</button>
     <p>Balance: <span id="balance">0.00</span> Php</p>
 
+    <div class="receipt" id="receipt">
+        <h3>Receipt</h3>
+        <p><span id="fghcReceipt">Fghc:</span> <span id="fghcQtyReceipt">0</span></p>
+        <p><span id="dkjfnReceipt">Dkjfn:</span> <span id="dkjfnQtyReceipt">0</span></p>
+        <p><span id="zxfcReceipt">Zxfc:</span> <span id="zxfcQtyReceipt">0</span></p>
+        <hr>
+        <p>Total: <span id="receiptTotal">0.00</span> Php</p>
+    </div>
+
     <script>
         function calculateTotal() {
-            const fghcPrice = 99.99;
-            const dkjfnPrice = 15.99;
-            const zxfcPrice = 11.00;
-
-            const fghcQuantity = parseFloat(document.getElementById('fghcQuantity').value);
-            const dkjfnQuantity = parseFloat(document.getElementById('dkjfnQuantity').value);
-            const zxfcQuantity = parseFloat(document.getElementById('zxfcQuantity').value);
-
-            const totalAmount = (fghcPrice * fghcQuantity) + (dkjfnPrice * dkjfnQuantity) + (zxfcPrice * zxfcQuantity);
-            document.getElementById('totalAmount').textContent = totalAmount.toFixed(2);
+            // ... (same as before)
         }
 
         function calculateBalance() {
@@ -75,6 +81,13 @@
             }
 
             document.getElementById('balance').textContent = balance.toFixed(2);
+
+            // Update receipt
+            document.getElementById('fghcQtyReceipt').textContent = parseFloat(document.getElementById('fghcQuantity').value);
+            document.getElementById('dkjfnQtyReceipt').textContent = parseFloat(document.getElementById('dkjfnQuantity').value);
+            document.getElementById('zxfcQtyReceipt').textContent = parseFloat(document.getElementById('zxfcQuantity').value);
+            document.getElementById('receiptTotal').textContent = totalAmount.toFixed(2);
+            document.getElementById('receipt').style.display = 'block';
         }
     </script>
 </body>
