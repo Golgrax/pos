@@ -53,14 +53,15 @@
 
     <!-- Receipt (Initially hidden) -->
     <div id="posreceipt" style="display: none;">
-        <h2>Receipt</h2>
-        <ul id="receipt-items"></ul>
-        <p>Subtotal: <span id="receipt-subtotal">₱0</span></p>
-        <p>Tax (2%): <span id="receipt-tax">₱0</span></p>
-        <p>Total: <span id="receipt-total">₱0</span></p>
-        <p>Payment Amount: <input type="number" id="payment-amount"></p>
-        <button onclick="calculateChange()">Calculate Change</button>
-        <p>Change: <span id="receipt-change">₱0</span></p>
+    <h2>Receipt</h2>
+    <ul id="receipt-items"></ul>
+    <p>Subtotal: <span id="receipt-subtotal">₱0</span></p>
+    <p>Tax (2%): <span id="receipt-tax">₱0</span></p>
+    <p>Total: <span id="receipt-total">₱0</span></p>
+    <p>Payment Amount: <input type="number" id="payment-amount"></p>
+    <button onclick="calculateChange()">Calculate Change</button>
+    <p>Change: <span id="receipt-change">₱0</span></p>
+        
         <select id="payment-method">
             <option value="paypal">PayPal</option>
             <option value="credit_card">Credit Card</option>
@@ -103,9 +104,9 @@
         }
 
         function calculateChange() {
-            const paymentAmount = parseFloat(document.getElementById("payment-amount").value);
-            const change = paymentAmount - (subtotal + subtotal * 0.02);
-            document.getElementById("receipt-change").textContent = `₱${change.toFixed(2)}`;
+        const paymentAmount = parseFloat(document.getElementById("payment-amount").value);
+        const change = paymentAmount - (subtotal + subtotal * 0.02);
+        document.getElementById("receipt-change").textContent = `₱${change.toFixed(2)}`;
         }
 
         function processOrder() {
