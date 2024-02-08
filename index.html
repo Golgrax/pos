@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Restaurant POS</title>
+    <title>Isaah Hangout</title>
     <style>
         /* Add your custom CSS styles here */
         body {
@@ -29,16 +29,32 @@
     </style>
 </head>
 <body>
-    <h1>Restaurant Menu</h1>
+    <center>
+    <h1>Isaah Hangout Restaurant Menu</h1>
 
     <!-- Product List -->
     <div id="poslist">
         <div class="product">
-            <img src="banana.png" alt="Banana">
-            <span class="name">Banana</span>
-            <span class="price">₱12</span>
-            <input type="number" id="banana-quantity" value="1">
-            <button onclick="addToCart('Banana', 12)">Add to Cart</button>
+            <img src="Blowjob Tower.png" alt="BJ Tower">
+            <span class="name">Blowjob Tower</span>
+            <span class="price">₱499</span>
+            <input type="number" id="BJ-Tower-quantity" value="1">
+            <button onclick="addToCart('BJ-Tower', 12)">Add to Cart</button>
+        </div>
+
+        <div class="product">
+            <img src="Tequila.png" alt="Tequila">
+            <span class="name">Tequila</span>
+            <span class="price">₱2300</span>
+            <input type="number" id="Tequila-quantity" value="1">
+            <button onclick="addToCart('Tequila', 12)">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="Chicharon Bulk.png" alt="Chicharon">
+            <span class="name">Chicharon Bulk.</span>
+            <span class="price">₱199</span>
+            <input type="number" id="Chicharon-Bulk.-quantity" value="1">
+            <button onclick="addToCart('Tequila', 12)">Add to Cart</button>
         </div>
         <!-- Add more products here... -->
     </div>
@@ -114,5 +130,6 @@
             alert(`Order confirmed! Payment method: ${paymentMethod}`);
         }
     </script>
+    </center>
 </body>
     </html>
