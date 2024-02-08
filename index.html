@@ -104,9 +104,9 @@
         }
 
         function calculateChange() {
-        const paymentAmount = parseFloat(document.getElementById("payment-amount").value);
-        const change = paymentAmount - (subtotal + subtotal * 0.02);
-        document.getElementById("receipt-change").textContent = `₱${change.toFixed(2)}`;
+            const paymentAmount = parseFloat(document.getElementById("payment-amount").value);
+            const change = paymentAmount - (subtotal + subtotal * 0.02);
+            document.getElementById("receipt-change").textContent = `₱${change.toFixed(2)}`;
         }
 
         function processOrder() {
