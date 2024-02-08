@@ -6,6 +6,26 @@
     <title>Restaurant POS</title>
     <style>
         /* Add your custom CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .product {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .product img {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+        }
+        .product button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -17,6 +37,7 @@
             <img src="banana.png" alt="Banana">
             <span class="name">Banana</span>
             <span class="price">₱12</span>
+            <input type="number" id="banana-quantity" value="1">
             <button onclick="addToCart('Banana', 12)">Add to Cart</button>
         </div>
         <!-- Add more products here... -->
@@ -37,7 +58,9 @@
         <p>Subtotal: <span id="receipt-subtotal">₱0</span></p>
         <p>Tax (2%): <span id="receipt-tax">₱0</span></p>
         <p>Total: <span id="receipt-total">₱0</span></p>
-        <p>Select Payment Method:</p>
+        <p>Payment Amount: <input type="number" id="payment-amount"></p>
+        <button onclick="calculateChange()">Calculate Change</button>
+        <p>Change: <span id="receipt-change">₱0</span></p>
         <select id="payment-method">
             <option value="paypal">PayPal</option>
             <option value="credit_card">Credit Card</option>
@@ -47,21 +70,19 @@
     </div>
 
     <script>
-        // Initialize cart and receipt data
         const cart = {};
         let subtotal = 0;
 
-        // Add item to cart
         function addToCart(itemName, price) {
+            const quantity = parseInt(document.getElementById(`${itemName.toLowerCase()}-quantity`).value);
             if (!cart[itemName]) {
                 cart[itemName] = 0;
             }
-            cart[itemName]++;
-            subtotal += price;
+            cart[itemName] += quantity;
+            subtotal += price * quantity;
             updateCart();
         }
 
-        // Update cart display
         function updateCart() {
             const cartItems = document.getElementById("cart-items");
             cartItems.innerHTML = "";
@@ -71,7 +92,6 @@
             document.getElementById("cart-total").textContent = `₱${subtotal}`;
         }
 
-        // Show receipt
         function showReceipt() {
             document.getElementById("poscart").style.display = "none";
             document.getElementById("posreceipt").style.display = "block";
@@ -82,10 +102,14 @@
             document.getElementById("receipt-total").textContent = `₱${total.toFixed(2)}`;
         }
 
-        // Process order (placeholder function)
+        function calculateChange() {
+            const paymentAmount = parseFloat(document.getElementById("payment-amount").value);
+            const change = paymentAmount - (subtotal + subtotal * 0.02);
+            document.getElementById("receipt-change").textContent = `₱${change.toFixed(2)}`;
+        }
+
         function processOrder() {
             const paymentMethod = document.getElementById("payment-method").value;
-            // Handle payment processing (e.g., send data to server or payment gateway)
             alert(`Order confirmed! Payment method: ${paymentMethod}`);
         }
     </script>
