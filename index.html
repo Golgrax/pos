@@ -33,21 +33,40 @@
 
     <!-- Product List -->
     <div id="poslist">
-        <!-- ... (same as before) ... -->
+        <div class="product">
+            <img src="banana.png" alt="Banana">
+            <span class="name">Banana</span>
+            <span class="price">₱12</span>
+            <input type="number" id="banana-quantity" value="1">
+            <button onclick="addToCart('Banana', 12)">Add to Cart</button>
+        </div>
+        <!-- Add more products here... -->
     </div>
 
     <!-- Shopping Cart -->
     <div id="poscart">
-        <!-- ... (same as before) ... -->
+        <h2>Shopping Cart</h2>
+        <ul id="cart-items"></ul>
+        <p>Total: <span id="cart-total">₱0</span></p>
+        <button onclick="showReceipt()">Place Order</button>
     </div>
 
     <!-- Receipt (Initially hidden) -->
     <div id="posreceipt" style="display: none;">
-        <!-- ... (same as before) ... -->
+        <h2>Receipt</h2>
+        <ul id="receipt-items"></ul>
+        <p>Subtotal: <span id="receipt-subtotal">₱0</span></p>
+        <p>Tax (2%): <span id="receipt-tax">₱0</span></p>
+        <p>Total: <span id="receipt-total">₱0</span></p>
         <p>Payment Amount: <input type="number" id="payment-amount"></p>
         <button onclick="calculateChange()">Calculate Change</button>
         <p>Change: <span id="receipt-change">₱0</span></p>
-        <!-- ... (same as before) ... -->
+        <select id="payment-method">
+            <option value="paypal">PayPal</option>
+            <option value="credit_card">Credit Card</option>
+            <option value="cash_on_delivery">Cash on Delivery</option>
+        </select>
+        <button onclick="processOrder()">Confirm Order</button>
     </div>
 
     <script>
@@ -70,13 +89,13 @@
             for (let item in cart) {
                 cartItems.innerHTML += `<li>${item} (${cart[item]})</li>`;
             }
-            document.getElementById("cart-total").textContent = `₱${subtotal.toFixed(2)}`;
+            document.getElementById("cart-total").textContent = `₱${subtotal}`;
         }
 
         function showReceipt() {
             document.getElementById("poscart").style.display = "none";
             document.getElementById("posreceipt").style.display = "block";
-            document.getElementById("receipt-subtotal").textContent = `₱${subtotal.toFixed(2)}`;
+            document.getElementById("receipt-subtotal").textContent = `₱${subtotal}`;
             const tax = subtotal * 0.02;
             document.getElementById("receipt-tax").textContent = `₱${tax.toFixed(2)}`;
             const total = subtotal + tax;
@@ -95,4 +114,4 @@
         }
     </script>
 </body>
-</html>
+    </html>
