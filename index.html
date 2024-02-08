@@ -29,7 +29,7 @@
     </style>
 </head>
 <body>
-    <center>
+
     <h1>Restaurant Menu</h1>
 
     <!-- Product List -->
@@ -51,7 +51,7 @@
         <p>Total: <span id="cart-total">₱0</span></p>
         <button onclick="showReceipt()">Place Order</button>
     </div>
-
+        <center>
     <!-- Receipt (Initially hidden) -->
     <div id="posreceipt" style="display: none;">
     <h2>Receipt</h2>
@@ -70,7 +70,7 @@
         </select>
         <button onclick="processOrder()">Confirm Order</button>
     </div>
-
+        </center>
     <script>
         const cart = {};
         let subtotal = 0;
@@ -115,6 +115,6 @@
             alert(`Order confirmed! Payment method: ${paymentMethod}`);
         }
     </script>
-        </center>
+
 </body>
     </html>
