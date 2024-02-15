@@ -191,6 +191,14 @@ background-size: cover;
         const cart = {};
         let subtotal = 0;
 
+        function updateReceipt() {
+    const receiptItems = document.getElementById("receipt-items");
+    receiptItems.innerHTML = "";
+    for (let item in cart) {
+        receiptItems.innerHTML += `<li>${item} (${cart[item]})</li>`;
+    }
+}
+
         function addToCart(itemName, price) {
             const quantity = parseInt(document.getElementById(`${itemName.toLowerCase()}-quantity`).value);
             if (!cart[itemName]) {
